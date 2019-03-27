@@ -29,6 +29,7 @@ declare(strict_types=1);
 namespace Tests\CdekSDK\Serialization;
 
 use CdekSDK\Contracts\ShouldAuthorize;
+use CdekSDK\Requests\CalculationAuthorizedRequest;
 use CdekSDK\Requests\CalculationRequest;
 use PHPUnit\Framework\TestCase;
 
@@ -65,12 +66,12 @@ class CalculationRequestTest extends TestCase
             'tariffId'             => 1,
             'senderCityPostCode'   => '295000',
             'receiverCityPostCode' => '652632',
-        ], $request->getBody());
+        ], $request->jsonSerialize());
     }
 
     public function test_with_authorization()
     {
-        $request = CalculationRequest::withAuthorization();
+        $request = new CalculationAuthorizedRequest();
         $this->assertInstanceOf(ShouldAuthorize::class, $request);
 
         if ($request instanceof ShouldAuthorize) {
@@ -104,7 +105,7 @@ class CalculationRequestTest extends TestCase
             'secure'               => 'bar',
             'authLogin'            => 'foo',
             'dateExecute'          => '2018-01-01',
-        ], $request->getBody());
+        ], $request->jsonSerialize());
     }
 
     public function test_with_city_id()
@@ -139,7 +140,7 @@ class CalculationRequestTest extends TestCase
                 ],
             ],
             'receiverCityId' => 2,
-        ], $request->getBody());
+        ], $request->jsonSerialize());
     }
 
     public function test_constants_exists()

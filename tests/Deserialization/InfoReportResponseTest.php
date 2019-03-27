@@ -51,9 +51,7 @@ class InfoReportResponseTest extends TestCase
         $this->assertInstanceOf(InfoReportResponse::class, $response);
 
         foreach ($response->getMessages() as $message) {
-            if ($message->getErrorCode() !== '') {
-                $this->fail($message->getMessage());
-            }
+            $this->assertEmpty($message->getErrorCode(), $message->getMessage());
         }
 
         $this->assertCount(1, $response->getOrders());
@@ -126,8 +124,8 @@ class InfoReportResponseTest extends TestCase
         $this->assertInstanceOf(InfoReportResponse::class, $response);
 
         foreach ($response->getMessages() as $message) {
-            $this->assertTrue($message->isError());
-            $this->assertContains('Заказ не найден', $message->getText());
+            $this->assertNotEmpty($message->getErrorCode());
+            $this->assertContains('Заказ не найден', $message->getMessage());
         }
     }
 

@@ -52,14 +52,6 @@ final class Error implements HasErrorCode
         return $this->code;
     }
 
-    /**
-     * @deprecated use getMessage()
-     */
-    public function getText(): string
-    {
-        return $this->getMessage();
-    }
-
     public function getErrorCode(): string
     {
         return (string) $this->getCode();

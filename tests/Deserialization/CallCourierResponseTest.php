@@ -52,8 +52,8 @@ class CallCourierResponseTest extends TestCase
         $this->assertCount(1, $response->getNumbers());
 
         foreach ($response->getMessages() as $message) {
-            $this->assertFalse($message->isError());
-            $this->assertSame('Добавлено заявок 1', $message->getText());
+            $this->assertEmpty($message->getErrorCode());
+            $this->assertSame('Добавлено заявок 1', $message->getMessage());
         }
 
         $this->assertCount(1, $response->getMessages());
@@ -76,9 +76,8 @@ class CallCourierResponseTest extends TestCase
         $this->assertCount(8, $response->getMessages());
 
         foreach ($response->getMessages() as $message) {
-            $this->assertTrue($message->isError());
-            $this->assertSame('Отсутствие обязательного атрибута: SendCityCode', $message->getText());
-            $this->assertSame('ERR_NEED_ATTRIBUTE', $message->getCode());
+            $this->assertSame('Отсутствие обязательного атрибута: SendCityCode', $message->getMessage());
+            $this->assertSame('ERR_NEED_ATTRIBUTE', $message->getErrorCode());
             break;
         }
 
@@ -88,13 +87,13 @@ class CallCourierResponseTest extends TestCase
         $this->assertCount(8, $response->getErrors());
 
         foreach ($response->getErrors() as $message) {
-            $this->assertTrue($message->isError());
+            $this->assertNotEmpty($message->getErrorCode());
         }
 
         if (isset($message)) {
             /** @var $message Message */
-            $this->assertSame('Интервал ожидания курьера между TimeBeg и TimeEnd должен составлять не менее 3 непрерывных часов', $message->getText());
-            $this->assertSame('ERR_CALLCOURIER_TIME_INTERVAL', $message->getCode());
+            $this->assertSame('Интервал ожидания курьера между TimeBeg и TimeEnd должен составлять не менее 3 непрерывных часов', $message->getMessage());
+            $this->assertSame('ERR_CALLCOURIER_TIME_INTERVAL', $message->getErrorCode());
         }
     }
 
@@ -105,8 +104,8 @@ class CallCourierResponseTest extends TestCase
         $this->assertCount(1, $response->getErrors());
 
         foreach ($response->getErrors() as $message) {
-            $this->assertSame('Не найден обязательный тег:CALL', $message->getText());
-            $this->assertSame('ERR_NOTFOUNDTAG', $message->getCode());
+            $this->assertSame('Не найден обязательный тег:CALL', $message->getMessage());
+            $this->assertSame('ERR_NOTFOUNDTAG', $message->getErrorCode());
         }
     }
 

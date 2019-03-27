@@ -30,7 +30,7 @@ namespace CdekSDK\Common;
 
 use JMS\Serializer\Annotation as JMS;
 
-final class Status implements State
+final class Status
 {
     use Fillable;
 

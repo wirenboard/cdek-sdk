@@ -46,7 +46,6 @@ use CdekSDK\Common\Order;
 use CdekSDK\Common\Package;
 use CdekSDK\Common\Pvz;
 use CdekSDK\Common\Reason;
-use CdekSDK\Common\State;
 use CdekSDK\Common\Status;
 use CdekSDK\Common\WeightLimit;
 use CdekSDK\Contracts\Request;
@@ -96,7 +95,6 @@ class SanityTest extends TestCase
         Pvz::class,
         Reason::class,
         DelayReasonState::class,
-        State::class,
         Status::class,
         WeightLimit::class,
         CalculationAuthorizedRequest::class,

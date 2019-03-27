@@ -36,12 +36,10 @@ use CdekSDK\Common\Status;
  */
 class StatusTest extends TestCase
 {
-    public function test_plain_State()
+    public function test_plain_status()
     {
         /** @var Status $state */
         $state = $this->getSerializer()->deserialize('<State Date="2018-03-21T14:54:13+00:00" Code="1" Description="Создан" CityCode="44" CityName="Москва" />', Status::class, 'xml');
-
-        $this->assertInstanceOf(State::class, $state);
 
         $this->assertSame(1, $state->getCode());
         $this->assertSame('2018-03-21', $state->getDate()->format('Y-m-d'));

@@ -38,7 +38,7 @@ use CdekSDK\Responses\CalculationResponse;
  *
  * @final
  */
-class CalculationRequest implements JsonRequest, \JsonSerializable
+class CalculationRequest implements JsonRequest
 {
     use RequestCore;
 
@@ -78,16 +78,6 @@ class CalculationRequest implements JsonRequest, \JsonSerializable
     protected $tariffList = [];
     protected $receiverCityId;
     protected $receiverCityPostCode;
-
-    /**
-     * @deprecated
-     *
-     * @return CalculationAuthorizedRequest
-     */
-    public static function withAuthorization(): CalculationAuthorizedRequest
-    {
-        return new CalculationAuthorizedRequest();
-    }
 
     /** @return self */
     public function setSenderCityId($id)
@@ -182,12 +172,6 @@ class CalculationRequest implements JsonRequest, \JsonSerializable
         ];
 
         return $this;
-    }
-
-    /** @deprecated */
-    public function getBody(): array
-    {
-        return $this->jsonSerialize();
     }
 
     /** @return array */

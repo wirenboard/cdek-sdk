@@ -106,7 +106,7 @@ class RequestCoreTest extends TestCase
 
             use RequestCore;
 
-            public function getBody(): array
+            public function jsonSerialize()
             {
                 return [];
             }

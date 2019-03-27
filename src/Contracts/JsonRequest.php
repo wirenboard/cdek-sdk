@@ -28,8 +28,6 @@ declare(strict_types=1);
 
 namespace CdekSDK\Contracts;
 
-interface JsonRequest extends Request
+interface JsonRequest extends \JsonSerializable, Request
 {
-    /** @deprecated */
-    public function getBody(): array;
 }

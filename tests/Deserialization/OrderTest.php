@@ -30,7 +30,6 @@ namespace Tests\CdekSDK\Deserialization;
 
 use CdekSDK\Common\Order;
 use CdekSDK\Common\Reason;
-use CdekSDK\Common\State;
 use CdekSDK\Common\Status;
 use CdekSDK\Responses\StatusReportResponse;
 use Tests\CdekSDK\Fixtures\FixtureLoader;
@@ -78,8 +77,6 @@ class OrderTest extends TestCase
         /** @var Status $firstState */
         $firstState = reset($states);
 
-        $this->assertInstanceOf(State::class, $firstState);
-
         $this->assertSame('2018-03-21', $firstState->getDate()->format('Y-m-d'));
         $this->assertSame(1, $firstState->getCode());
         $this->assertSame('Создан', $firstState->getDescription());
@@ -89,8 +86,6 @@ class OrderTest extends TestCase
 
         /** @var Status $lastState */
         $lastState = end($states);
-
-        $this->assertInstanceOf(State::class, $lastState);
 
         $this->assertSame('2018-04-06', $lastState->getDate()->format('Y-m-d'));
         $this->assertSame(4, $lastState->getCode());

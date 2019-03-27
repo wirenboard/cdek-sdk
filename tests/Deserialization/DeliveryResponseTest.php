@@ -48,7 +48,7 @@ class DeliveryResponseTest extends TestCase
         $this->assertCount(2, $response->getMessages());
 
         foreach ($response->getMessages() as $message) {
-            $this->assertTrue($message->isError());
+            $this->assertNotEmpty($message->getErrorCode());
         }
     }
 
@@ -62,7 +62,7 @@ class DeliveryResponseTest extends TestCase
         $this->assertCount(2, $response->getMessages());
 
         foreach ($response->getMessages() as $message) {
-            $this->assertTrue($message->isError());
+            $this->assertNotEmpty($message->getErrorCode());
             break;
         }
     }
@@ -77,7 +77,7 @@ class DeliveryResponseTest extends TestCase
         $this->assertCount(3, $response->getMessages());
 
         foreach ($response->getMessages() as $message) {
-            $this->assertTrue($message->isError());
+            $this->assertNotEmpty($message->getErrorCode());
             break;
         }
 
@@ -115,7 +115,7 @@ class DeliveryResponseTest extends TestCase
         $this->assertCount(1, $response->getMessages());
 
         foreach ($response->getMessages() as $message) {
-            $this->assertTrue($message->isError());
+            $this->assertNotEmpty($message->getErrorCode());
         }
 
         $this->assertCount(1, $response->getRequests());
@@ -134,7 +134,7 @@ class DeliveryResponseTest extends TestCase
         $this->assertInstanceOf(DeliveryResponse::class, $response);
 
         foreach ($response->getMessages() as $message) {
-            $this->assertFalse($message->isError());
+            $this->assertEmpty($message->getErrorCode());
         }
 
         $this->assertTrue(isset($message));

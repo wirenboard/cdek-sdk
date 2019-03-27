@@ -35,19 +35,9 @@ use CdekSDK\Responses\Types\Message;
  */
 class MessageTest extends TestCase
 {
-    public function test_it_is_not_an_error()
-    {
-        $message = new Message('example');
-        $this->assertFalse($message->isError());
-        $this->assertSame('example', $message->getText());
-    }
-
     public function test_it_is_an_error()
     {
         $message = new Message('example', 'FOO');
-        $this->assertTrue($message->isError());
-        $this->assertSame('example', $message->getText());
-        $this->assertSame('FOO', $message->getCode());
 
         $this->assertSame('example', $message->getMessage());
         $this->assertSame('FOO', $message->getErrorCode());
@@ -67,8 +57,8 @@ class MessageTest extends TestCase
         foreach (Message::from([
            new Message('example1', 'FOO1'),
        ]) as $message) {
-            $this->assertSame('example1', $message->getText());
-            $this->assertSame('FOO1', $message->getCode());
+            $this->assertSame('example1', $message->getMessage());
+            $this->assertSame('FOO1', $message->getErrorCode());
         }
     }
 }

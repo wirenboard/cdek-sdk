@@ -51,9 +51,7 @@ class CalculationResponseTest extends TestCase
 
         $this->assertCount(1, $response->getErrors());
         foreach ($response->getErrors() as $error) {
-            $this->assertSame('Не задан тариф или список тарифов', $error->getText());
             $this->assertSame(6, $error->getCode());
-
             $this->assertSame('Не задан тариф или список тарифов', $error->getMessage());
             $this->assertSame('6', $error->getErrorCode());
         }

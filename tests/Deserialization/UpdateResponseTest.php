@@ -46,7 +46,7 @@ class UpdateResponseTest extends TestCase
         $this->assertCount(1, $response->getMessages());
 
         foreach ($response->getMessages() as $message) {
-            $this->assertFalse($message->isError());
+            $this->assertEmpty($message->getErrorCode());
         }
 
         $this->assertCount(1, $response->getOrders());
@@ -67,7 +67,6 @@ class UpdateResponseTest extends TestCase
         $this->assertCount(1, $response->getMessages());
 
         foreach ($response->getMessages() as $message) {
-            $this->assertTrue($message->isError());
             $this->assertSame('ERR_NEED_ATTRIBUTE', $message->getErrorCode());
             break;
         }

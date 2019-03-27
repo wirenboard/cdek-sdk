@@ -49,33 +49,6 @@ final class Message implements HasErrorCode
         $this->errorCode = $errorCode;
     }
 
-    /**
-     * @deprecated use getMessage()
-     * @codeCoverageIgnore
-     */
-    public function getText(): string
-    {
-        return $this->getMessage();
-    }
-
-    /**
-     * @deprecated use getErrorCode()
-     * @codeCoverageIgnore
-     */
-    public function getCode(): string
-    {
-        return $this->getErrorCode();
-    }
-
-    /**
-     * @deprecated use getErrorCode() !== ''
-     * @codeCoverageIgnore
-     */
-    public function isError(): bool
-    {
-        return (bool) $this->errorCode;
-    }
-
     public function getErrorCode(): string
     {
         return (string) $this->errorCode;

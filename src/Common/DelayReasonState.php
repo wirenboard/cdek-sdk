@@ -30,7 +30,7 @@ namespace CdekSDK\Common;
 
 use JMS\Serializer\Annotation as JMS;
 
-final class DelayReasonState implements State
+final class DelayReasonState
 {
     /**
      * @JMS\XmlAttribute
