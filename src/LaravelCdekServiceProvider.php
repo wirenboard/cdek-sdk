@@ -34,10 +34,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
-/**
- * @final
- */
-class LaravelCdekServiceProvider extends ServiceProvider
+final class LaravelCdekServiceProvider extends ServiceProvider
 {
     protected $defer = true;
 
